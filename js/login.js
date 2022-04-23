@@ -1,19 +1,34 @@
-const defaultUrlHeader = "http://localhost:3000";
+window.addEventListener('DOMContentLoaded', function () {
+    // AJAX请求
+    const defaultUrlHeader = "http://localhost:3000";
 
-// AJAX请求函数
-function AjaxRequest(url, operationFn) {
-    let xmr = new XMLHttpRequest();
-    xmr.open("GET", url, true);
-    xmr.send();
-    xmr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status >= 200 && this.status < 300) {
-            operationFn(JSON.parse(xmr.responseText));
+    const AjaxRequest = function (url, operationFn) {
+        let xmr = new XMLHttpRequest();
+        xmr.open("GET", url, true);
+        xmr.send();
+        xmr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status >= 200 && this.status < 300) {
+                    operationFn(JSON.parse(xmr.responseText));
+                }
+            }
         }
     }
-}
 
-AjaxRequest(`${defaultUrlHeader}/login/status`,);
-function oook() {
-    console.log(1);
-}
+    function judgeLoginStasus() {
+        AjaxRequest(`${defaultUrlHeader}/login/status`, loginstatus);
+    }
 
+    judgeLoginStasus();
+
+    let profile = document.querySelector('.profile');
+    let unlogin = document.querySelector('.unlogin');
+
+    function loginstatus(responseText) {
+        console.log(responseText.data);
+        if (responseText.data.account == null) {
+            profile.style.display = 'none';
+        }
+    }
+    loginstatus();
+})
