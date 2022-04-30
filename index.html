@@ -10,14 +10,18 @@
     <link rel="stylesheet" href="css/base.css">
     <script src="js/index.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/search.js"></script>
 </head>
 
 <body>
     <section class="content">
         <div class="sidebar">
+            <!-- 侧边栏开始 -->
             <div class="login">
                 <div class="unlogin"><a href="javascript:;">登录</a></div>
-                <div class="profile"></div>
+                <div class="profile">
+                    <img src="#" alt="">
+                </div>
                 <div class="login_board">
                     <div class="login_close"><a href="javascript:;">×</a></div>
                     <p class="login_title1">手机登录</p>
@@ -42,10 +46,29 @@
             </div>
 
             <ul class="nav">
-                <li class="nav_search"></li>
-                <li class="nav_history"></li>
-                <li class="nav_list"></li>
+                <li class="nav_search"><a href="javascript:;">搜索</a></li>
+                <li class="nav_history"><a href="javascript:;">历史</a></li>
+                <li class="nav_list"><a href="javascript:;">歌单</a></li>
             </ul>
+            <!-- 侧边栏结束 -->
+
+            <!-- 拓展页开始 -->
+            <div class="detail">
+                <div class="search_detail">
+                    <input type="text" class="search_input">
+                    <div class="search_summit"><a href="javascript:;">&#xe63c;</a></div>
+                    <ul class="keywords"></ul>
+                    <ul class="hotwords"></ul>
+                    <ul class="search_result">
+                        <li>
+                            <div class="play">&#xe717;</div>
+                            <div class="title"><a href="#"></a></div>
+                            <div class="author"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 拓展也结束 -->
         </div>
         <div class="focus"></div>
     </section>
